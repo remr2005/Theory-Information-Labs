@@ -53,6 +53,8 @@ def calc_p_y(p_x: ndarray, P_xy: ndarray) -> ndarray:
 def calc_joint_prob(p_x: ndarray, P_xy: ndarray) -> ndarray:
     """
     Рассчет матрицы совместных вероятностей P(X,Y)
+    P(X,Y) = P(X) * P(X|Y) - правильная формула
     """
-    p_y = calc_p_y(p_x, P_xy)
-    return P_xy * p_y  # broadcasting
+    return (
+        P_xy * p_x[:, np.newaxis]
+    )  # broadcasting: каждая строка P_xy умножается на соответствующий элемент p_x

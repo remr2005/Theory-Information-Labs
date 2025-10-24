@@ -36,6 +36,7 @@ def calculate_private_entropy(probability: float) -> float:
 def calculate_conditional_entropy(P_xy: ndarray, P_joint: ndarray) -> float:
     """
     Вычисление условной энтропии H(X|Y) при неполной достоверности передачи.
+    H(X|Y) = -ΣΣ p(xi,yj) log₂ p(xi|yj)
 
     Args:
         P_xy (ndarray): Матрица условных вероятностей P(X|Y) размером NxN.
